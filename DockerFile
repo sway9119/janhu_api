@@ -15,13 +15,6 @@ COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 COPY . /app
 
-# ローカルで作成したentrypoint.shファイル(後で記述)を/usr/bin/へコピー
-COPY entrypoint.sh /usr/bin/
-# /usr/bin/entrypoint.shに対して実行権限を付与している(chmod +x)
-# これによってシェルスクリプトファイルを実行可能にする
-RUN chmod +x /usr/bin/entrypoint.sh
-# exec形式でデフォルトで実行するコマンドラインの引数としてentrypoint.shを指定
-ENTRYPOINT ["entrypoint.sh"]
 # ネットワーク上のポートを指定する
 EXPOSE 4000
 
