@@ -1,22 +1,13 @@
-# FROMでベースイメージを設定
-# 今回はRubyのバージョン2.7をベースイメージとして設定
 FROM ruby:3.1.4
-# nodeやyarn等の必要なライブラリをインストール
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-# Railsアプリを配置するフォルダをコンテナ内に作成
-RUN mkdir /app
-# 作成したディレクトリをワークディレクトリとして設定
-WORKDIR /app
-# ルート配下のGemfileをコンテナ内のRailsアプリを配置場所にコピー
-COPY Gemfile /app/Gemfile
-# Gemfile.lockも同様にコンテナ内にコピーする
-COPY Gemfile.lock /app/Gemfile.lock
-# Gemfileの記述を元にbundle installを実行
-RUN bundle install
-COPY . /app
 
-# ネットワーク上のポートを指定する
+WORKDIR /app
+
+RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+
+COPY Gemfile Gemfile.lock ./
+
+RUN bundle install
+
 EXPOSE 4000
 
-# Railsサーバーを稼働させる
 CMD ["rails", "server", "-b", "0.0.0.0"]
