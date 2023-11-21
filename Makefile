@@ -11,3 +11,6 @@ stop: ## 起動中のコンテナを停止します
 
 down: ## コンテナを修了します
 	@docker-compose down
+
+ps: ## コンテナを修了します
+	@docker-compose ps
