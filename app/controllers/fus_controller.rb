@@ -3,6 +3,8 @@
 # 符に関するコントローラ
 class FusController < ApplicationController
   def calc_fu
+    # 参考サイト: https://majandofu.com/fu-calculation
+    # http://localhost:4000/calc_fu?mentsu=[["p1", "p1", "p1"],["p1", "p2", "p3"],["s2", "s2", "s2"],["s1", "s2", "s3"]]&janto=["j1","j1"]&machj_type=tanki&agari_type=tsumo&menzen=true&kaze="j1"
     render json: { fu: 20 } if agari_type_pinfu_tsumo?
     render json: { fu: 25 } if agari_type_ci_toitsu?
 
