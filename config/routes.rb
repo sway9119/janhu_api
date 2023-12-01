@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   tehai = '(/:mentsu)(/:janto)(/:agari_type)(/:menzen)/'
   get "calc_fu#{tehai}",
   # constraints: { mentsu: /\d+/, janto: /\d+/, agari_type: /[a-z]+/, menzen /[true|false]/ },
-  to: 'utils#calc_fu',
+  to: 'fus#calc_fu',
   as: 'calc_fu'
 end
