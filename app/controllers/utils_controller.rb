@@ -5,10 +5,14 @@
 # その他の機能
 class UtilsController < ApplicationController
   def agari
-    # TODO: 符の計算する用の上がり手を返す処理を実装する
-    
+    result = constract_mentsu
     # TODO: mentsuに鳴きかどうかのフラグが必要だ...
-    render json:
+    render json: result
+  end
+
+  private
+
+  def constract_mentsu
     {
       mentsu: [
         ["p1", "p1", "p1"],
