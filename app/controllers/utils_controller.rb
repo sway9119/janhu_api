@@ -5,14 +5,15 @@
 # その他の機能
 class UtilsController < ApplicationController
   def agari
-    result = constract_mentsu
-    # TODO: mentsuに鳴きかどうかのフラグが必要だ...
+    result = {}
+    result.merge!(constract_tehai)
+    result.merge!(constract_ba)
     render json: result
   end
 
   private
 
-  def constract_mentsu
+  def constract_tehai
     {
       mentsu: [
         ["p1", "p1", "p1"],
@@ -21,6 +22,11 @@ class UtilsController < ApplicationController
         ["s1", "s2", "s3"],
       ],
       janto: ["j1","j1"],
+    }
+  end
+
+  def constract_ba
+    {
       machj_type: "tanki",
       agari_type: "tsumo",
       menzen: true,
